@@ -31,10 +31,24 @@ exports['test'] = {
 			}));
 		listEqual(list, [v1, v3, v5], test);
 		// other syntax
-		list = [v3, v5, v1].sort(ordering.onResultOf(function(item) {
+		list = [v3, v5, v1].sort(ordering.onResultOf(function() {
 			return this.value;
 		}));
 		listEqual(list, [v1, v3, v5], test);
+		test.done();
+	},
+	'reverse then on result of': function(test) {
+		var v1 = {
+			value: 1
+		}, v3 = {
+				value: 3
+			}, v5 = {
+				value: 5
+			},
+			list = [v3, v5, v1].sort(ordering.reverse().onResultOf(function() {
+				return this.value;
+			}));
+		listEqual(list, [v5, v3, v1], test);
 		test.done();
 	},
 	'all': function(test) {
