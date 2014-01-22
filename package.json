@@ -20,8 +20,9 @@
   "devDependencies": {
     "test": "",
     "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.8.0",
     "nodeunit": "~0.8.2",
-    "grunt-contrib-nodeunit": "~0.2.2"
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-nodeunit": "~0.2.2",
+    "grunt-cli": "~0.1.12"
   }
 }
