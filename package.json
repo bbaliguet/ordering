@@ -1,0 +1,27 @@
+{
+  "name": "ordering.js",
+  "version": "0.0.1",
+  "description": "Ordering helper with chaining. Inspired from Guava ordering",
+  "author": "Benoît Baliguet <benoit.baliguet@gmail.com>",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bbaliguet/ordering.js"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "keywords": [
+    "sort",
+    "ordering"
+  ],
+  "devDependencies": {
+    "test": "",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.8.0",
+    "nodeunit": "~0.8.2",
+    "grunt-contrib-nodeunit": "~0.2.2"
+  }
+}
