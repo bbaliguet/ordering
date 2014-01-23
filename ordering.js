@@ -19,6 +19,11 @@
 		},
 
 		chainable = function(fn) {
+
+			if (!fn) {
+				fn = ordering;
+			}
+
 			fn.onResultOf = function(getter) {
 				var parent = getParent(this);
 				return chainable(function(a, b) {
@@ -33,7 +38,7 @@
 				});
 			};
 
-			fn.coumpound = function(otherOrdering) {
+			fn.compound = function(otherOrdering) {
 				var parent = getParent(this);
 				return chainable(function(a, b) {
 					var result = parent(a, b);

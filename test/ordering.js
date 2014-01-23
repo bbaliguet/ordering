@@ -70,7 +70,7 @@ exports['test'] = {
 			},
 			list = [v22, v13, v12, v21, v11].sort(ordering.onResultOf(function(item) {
 				return item.value;
-			}).coumpound(ordering.onResultOf(function() {
+			}).compound(ordering.onResultOf(function() {
 				return this.otherValue;
 			}).reverse()));
 
