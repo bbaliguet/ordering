@@ -37,6 +37,18 @@ exports['test'] = {
 		listEqual(list, [v1, v3, v5], test);
 		test.done();
 	},
+	'on path':  function(test) {
+		var v1 = {
+			value: 1
+		}, v3 = {
+				value: 3
+			}, v5 = {
+				value: 5
+			},
+			list = [v3, v5, v1].sort(ordering.onPath('.value'));
+		listEqual(list, [v1, v3, v5], test);
+		test.done();
+	},
 	'reverse then on result of': function(test) {
 		var v1 = {
 			value: 1

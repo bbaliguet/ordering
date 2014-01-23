@@ -18,6 +18,10 @@
 			return ordering;
 		},
 
+		pathGetter = function(path) {
+			return new Function("return this" + path); // jshint ignore:line
+		},
+
 		chainable = function(fn) {
 
 			if (!fn) {
@@ -44,6 +48,10 @@
 					var result = parent(a, b);
 					return result ? result : otherOrdering(a, b);
 				});
+			};
+
+			fn.onPath = function(path) {
+				return fn.onResultOf.call(this, pathGetter(path));
 			};
 
 			return fn;
