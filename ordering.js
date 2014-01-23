@@ -12,7 +12,7 @@
 	},
 
 		getParent = function(parent) {
-			if (typeof parent === 'function' && parent.onResultOf) {
+			if (typeof parent === 'function') {
 				return parent;
 			}
 			return ordering;
@@ -48,14 +48,19 @@
 	// node style
 	if (typeof exports !== 'undefined') {
 		chainable(exports);
+		exports.from = chainable;
 	}
 	// requirejs style
 	else if (typeof define !== 'undefined') {
-		define(chainable({}));
+		define(chainable({
+			from: chainable
+		}));
 	}
 	// global scope style
 	else {
-		window.ordering = chainable({});
+		window.ordering = chainable({
+			from: chainable
+		});
 	}
 
 })();

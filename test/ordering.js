@@ -76,6 +76,12 @@ exports['test'] = {
 
 		listEqual(list, [v13, v12, v11, v22, v21], test);
 		test.done();
-
+	},
+	'from': function(test) {
+		var list = ["qwe", "aaaaa", null].sort(ordering.from(function(a, b) {
+			return (a ? a.length : 0) - (b ? b.length : 0);
+		}).reverse());
+		listEqual(list, ["aaaaa", "qwe", null], test);
+		test.done();
 	}
 };
