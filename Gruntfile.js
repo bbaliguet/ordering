@@ -8,14 +8,22 @@ module.exports = function(grunt) {
     },
     nodeunit: {
       all: ['test/*.js']
+    },
+    uglify: {
+      all: {
+        files: {
+          'ordering.min.js': ['ordering.js']
+        }
+      }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint', 'nodeunit']);
+  grunt.registerTask('default', ['jshint', 'nodeunit', 'uglify']);
 
 };
