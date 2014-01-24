@@ -47,6 +47,15 @@ exports.test = {
 			},
 			list = [v3, v5, v1].sort(ordering.onPath('.value'));
 		listEqual(list, [v1, v3, v5], test);
+		
+		// alternative syntax
+		list = [v3, v5, v1].sort(ordering.onPath('value'));
+		listEqual(list, [v1, v3, v5], test);
+		
+		// alternative syntax
+		list = [v3, v5, v1].sort(ordering.onPath(['value']));
+		listEqual(list, [v1, v3, v5], test);
+
 		test.done();
 	},
 	'reverse then on result of': function(test) {
