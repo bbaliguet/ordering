@@ -47,6 +47,11 @@ Same a chainable.onResultOf, but using a string path in the element to retrieved
 	{value: 5}
 ].sort(ordering.onPath('.value'); // [{value:1}, {value:2}, {value:5}]
 ```
+#### Alternative syntaxes
+```Javascript
+ordering.onPath('value'); // first . can be omitted
+ordering.onPath(['value', 'something with a .']); // the path as an array can be provided if the . notation cannot be used
+```
 ### chainable.reverse()
 Return a chainable sorting function using previously provided sorting function, or ordering.from(), but with reverse ordering.
 ```Javascript
@@ -71,11 +76,11 @@ var v11 = {
 	value: 2,
 	otherValue: 2
 };
-[v22, v13, v12, v21, v11].sort(ordering.onResultOf(function(item) {
-	return item.value;
-}).compound(ordering.onResultOf(function() {
-	return this.otherValue;
-}))); // [v11, v12, v13, v21, v22]
+[v22, v13, v12, v21, v11].sort(
+	ordering.onPath(".value").compound(
+		ordering.onPath(".otherValue")
+	)
+); // [v11, v12, v13, v21, v22]
 ```
 ### Usage
 * as a requirejs module
