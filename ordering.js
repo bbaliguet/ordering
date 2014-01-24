@@ -3,13 +3,13 @@
 	"use strict";
 
 	var ordering = function(a, b) {
-		if (a < b) {
-			return -1;
-		} else if (a > b) {
-			return 1;
-		}
-		return 0;
-	},
+			if (a < b) {
+				return -1;
+			} else if (a > b) {
+				return 1;
+			}
+			return 0;
+		},
 
 		getParent = function(parent) {
 			if (typeof parent === 'function') {
@@ -19,7 +19,19 @@
 		},
 
 		pathGetter = function(path) {
-			return new Function("return this" + path); // jshint ignore:line
+			var parts = path.split ? path.split(".") : path;
+			// case start with .
+			if (parts[0] === "") {
+				parts.shift();
+			}
+			var nbParts = parts.length;
+			return function(element) {
+				var i = 0;
+				while (i < nbParts) {
+					element = element[parts[i++]];
+				}
+				return element;
+			};
 		},
 
 		chainable = function(fn) {

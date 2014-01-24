@@ -5,9 +5,9 @@ var listEqual = function(l1, l2, test) {
 	l1.forEach(function(element, index) {
 		test.equal(element, l2[index]);
 	});
-}
+};
 
-exports['test'] = {
+exports.test = {
 	'reverse': function(test) {
 		var list = [2, 3, 0].sort(ordering.reverse());
 		listEqual(list, [3, 2, 0], test);
