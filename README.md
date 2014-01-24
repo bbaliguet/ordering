@@ -49,8 +49,10 @@ Same a chainable.onResultOf, but using a string path in the element to retrieved
 ```
 #### Alternative syntaxes
 ```Javascript
-ordering.onPath('value'); // first . can be omitted
-ordering.onPath(['value', 'something with a .']); // the path as an array can be provided if the . notation cannot be used
+// first . can be omitted
+ordering.onPath('value'); 
+// the path as an array can be provided if the . notation cannot be used
+ordering.onPath(['value', 'something with a .']); 
 ```
 ### chainable.reverse()
 Return a chainable sorting function using previously provided sorting function, or ordering.from(), but with reverse ordering.
