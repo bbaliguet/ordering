@@ -11,6 +11,9 @@ module.exports = function(grunt) {
     },
     uglify: {
       all: {
+        options: {
+          preserveComments: 'some'
+        },
         files: {
           'ordering.min.js': ['ordering.js']
         }

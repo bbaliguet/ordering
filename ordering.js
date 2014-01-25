@@ -1,4 +1,5 @@
-(function() {
+/*! see https://github.com/bbaliguet/ordering */
+(function() { 
 
 	"use strict";
 
