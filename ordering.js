@@ -1,16 +1,16 @@
 /*! see https://github.com/bbaliguet/ordering */
-(function() { 
+(function(scope) {
 
 	"use strict";
 
 	var ordering = function(a, b) {
-			if (a < b) {
-				return -1;
-			} else if (a > b) {
-				return 1;
-			}
-			return 0;
-		},
+		if (a < b) {
+			return -1;
+		} else if (a > b) {
+			return 1;
+		}
+		return 0;
+	},
 
 		getParent = function(parent) {
 			if (typeof parent === 'function') {
@@ -70,23 +70,15 @@
 			return fn;
 		};
 
-
-	// node style
-	if (typeof exports !== 'undefined') {
-		chainable(exports);
-		exports.from = chainable;
-	}
-	// requirejs style
-	else if (typeof define !== 'undefined') {
+	if (typeof define === 'function') {
+		// requirejs style
 		define(chainable({
 			from: chainable
 		}));
-	}
-	// global scope style
-	else {
-		window.ordering = chainable({
-			from: chainable
-		});
+	} else {
+		// node /  global scope
+		chainable(scope);
+		scope.from = chainable;
 	}
 
-})();
+})(typeof exports !== 'undefined' ? exports : (this.ordering = {}, this.ordering));
