@@ -1,21 +1,14 @@
 var ordering = require('../ordering.js');
 
-var listEqual = function(l1, l2, test) {
-	test.equal(l1.length, l2.length);
-	l1.forEach(function(element, index) {
-		test.equal(element, l2[index]);
-	});
-};
-
 exports.test = {
 	'reverse': function(test) {
 		var list = [2, 3, 0].sort(ordering.reverse());
-		listEqual(list, [3, 2, 0], test);
+		test.deepEqual(list, [3, 2, 0]);
 		test.done();
 	},
 	'double reverse': function(test) {
 		var list = [2, 3, 0].sort(ordering.reverse().reverse());
-		listEqual(list, [0, 2, 3], test);
+		test.deepEqual(list, [0, 2, 3]);
 		test.done();
 	},
 	'on result of': function(test) {
@@ -29,12 +22,12 @@ exports.test = {
 			list = [v3, v5, v1].sort(ordering.onResultOf(function(item) {
 				return item.value;
 			}));
-		listEqual(list, [v1, v3, v5], test);
+		test.deepEqual(list, [v1, v3, v5]);
 		// other syntax
 		list = [v3, v5, v1].sort(ordering.onResultOf(function() {
 			return this.value;
 		}));
-		listEqual(list, [v1, v3, v5], test);
+		test.deepEqual(list, [v1, v3, v5]);
 		test.done();
 	},
 	'on path':  function(test) {
@@ -46,15 +39,15 @@ exports.test = {
 				value: 5
 			},
 			list = [v3, v5, v1].sort(ordering.onPath('.value'));
-		listEqual(list, [v1, v3, v5], test);
+		test.deepEqual(list, [v1, v3, v5]);
 		
 		// alternative syntax
 		list = [v3, v5, v1].sort(ordering.onPath('value'));
-		listEqual(list, [v1, v3, v5], test);
+		test.deepEqual(list, [v1, v3, v5]);
 		
 		// alternative syntax
 		list = [v3, v5, v1].sort(ordering.onPath(['value']));
-		listEqual(list, [v1, v3, v5], test);
+		test.deepEqual(list, [v1, v3, v5]);
 
 		test.done();
 	},
@@ -69,7 +62,7 @@ exports.test = {
 			list = [v3, v5, v1].sort(ordering.reverse().onResultOf(function() {
 				return this.value;
 			}));
-		listEqual(list, [v5, v3, v1], test);
+		test.deepEqual(list, [v5, v3, v1]);
 		test.done();
 	},
 	'all': function(test) {
@@ -95,14 +88,14 @@ exports.test = {
 				return this.otherValue;
 			}).reverse()));
 
-		listEqual(list, [v13, v12, v11, v22, v21], test);
+		test.deepEqual(list, [v13, v12, v11, v22, v21]);
 		test.done();
 	},
 	'from': function(test) {
 		var list = ["qwe", "aaaaa", null].sort(ordering.from(function(a, b) {
 			return (a ? a.length : 0) - (b ? b.length : 0);
 		}).reverse());
-		listEqual(list, ["aaaaa", "qwe", null], test);
+		test.deepEqual(list, ["aaaaa", "qwe", null]);
 		test.done();
 	}
 };
