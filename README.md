@@ -88,3 +88,10 @@ var v11 = {
 * as a requirejs module
 * as a nodejs module
 * directly on global scope
+
+## Release History
+26/01/2014: v1.0.0
+
+## License
+Copyright (c) 2014 Benoît Baliguet  
+Licensed under the MIT license.
