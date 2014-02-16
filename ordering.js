@@ -72,9 +72,10 @@
 
 	if (typeof define === 'function') {
 		// requirejs style
-		define(chainable({
-			from: chainable
-		}));
+		var api = chainable({
+			from : chainable
+		});
+		define(api);
 	} else {
 		// node /  global scope
 		chainable(scope);
